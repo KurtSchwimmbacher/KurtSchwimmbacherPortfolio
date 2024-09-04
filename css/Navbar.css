@@ -1,0 +1,67 @@
+.nav-bar-links {
+    width: 80%;
+    margin-left: 10%;
+    display: flex !important;
+    justify-content: center !important;
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.navbar-brand {
+    width: 0%;
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.nav-item {
+    width: 15%;
+    padding: var(--header-padding) 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--header-offset-height);
+    position: relative;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+.nav-link {
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 4px;
+    width: 0;
+    background-color: blue;
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(.19, 1, .22, 1), left 0.5s cubic-bezier(.19, 1, .22, 1);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Active link styling */
+.nav-link-active::before {
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Override hover styles when the link is active */
+.nav-link-active:hover::before {
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}

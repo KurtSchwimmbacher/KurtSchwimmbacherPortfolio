@@ -3,12 +3,10 @@
 <!-- include header -->
 <?php require_once '../includes/header.php';?>
 
-<!-- include nav bar -->
-<?php require_once '../includes/Navbar.php';?>
 
 <!-- link to css -->
 <link href="../css/index.css" rel="stylesheet">
-
+<link href="../css/header.css" rel="stylesheet">
 
 <main class="main-content">
     <div class="container">

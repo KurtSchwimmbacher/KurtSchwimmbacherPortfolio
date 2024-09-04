@@ -1,0 +1,9 @@
+.title-col{
+    display: flex !important; 
+    justify-content: center !important;
+
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
