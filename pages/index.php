@@ -19,9 +19,15 @@
         <div class="row">
             <div class="col-12">
                 <ul class="secondary-nav mt-5">
-                    <li class="sec-nav-link">UX</li>
-                    <li class="sec-nav-link">Dev</li>
-                    <li class="sec-nav-link">Graphic Design</li>
+                    <li class="sec-nav-link">
+                        <a href="../pages/UX.php">UX</a>
+                    </li>
+                    <li class="sec-nav-link">
+                        <a href="../pages/Dev.php">Dev</a>
+                    </li>
+                    <li class="sec-nav-link">
+                        <a href="../pages/Graphic.php">Graphic Design</a>    
+                    </li>
                 </ul>
             </div>
         </div>

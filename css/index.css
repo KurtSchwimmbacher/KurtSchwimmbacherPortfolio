@@ -28,3 +28,8 @@
 .sec-nav-link:active{
     box-shadow: inset -3px 5px 4px 0px #2E2E2E40;
 }
+
+.sec-nav-link >a{
+    text-decoration: none;
+    color: #000;
+}

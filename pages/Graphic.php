@@ -14,6 +14,10 @@
             </div>
         </div>
 
+        <!-- load Graphic Design case studies -->
+        <div class="row">
+            
+        </div>
 
     </div>
 
