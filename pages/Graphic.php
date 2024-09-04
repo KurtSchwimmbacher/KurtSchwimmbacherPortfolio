@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 title-col mt-5">
-                <h1>User Graphic Design Projects</h1>
+                <h1>Graphic Design Projects</h1>
             </div>
         </div>
 

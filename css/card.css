@@ -1,0 +1,21 @@
+
+.card{
+    border: none !important;
+    box-shadow: -3px 5px 4px 0px #2e2e2e15;
+}
+
+.card:hover{
+    cursor: pointer;
+    box-shadow: -3px 5px 4px 0px #2E2E2E40;
+}
+
+.card-title{
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+
+}
+
+.card >a{
+    text-decoration: none !important;
+    color: #2e2e2e !important;
+}
