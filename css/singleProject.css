@@ -1,0 +1,67 @@
+.case-study-img{
+    width: 100%;
+}
+
+.single-prod-title{
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+.case-study-img-thumbnail {
+    width: 60%;
+    margin-left: 20%;
+    transition: transform 0.3s ease;
+    border-radius: 25px;
+}
+
+.case-study-img-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0 !important;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #ffffff;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    /* max-height: 90%; */
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    color: #000;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.figma-prototype{
+    border-radius: 25px;
+    width: 100%;
+    height: 50vh !important;
+}

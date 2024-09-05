@@ -16,10 +16,13 @@ if (isset($_GET['id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // Define the media type as a variable
+    $mediaType = 'image';
+
     // Query to fetch the PDF associated with the project
-    $pdfSQL = "SELECT * FROM media WHERE projectID = ?";
+    $pdfSQL = "SELECT * FROM media WHERE projectID = ? AND mediaType = ?";
     $pdfSTMT = $conn->prepare($pdfSQL);
-    $pdfSTMT->bind_param("i", $projectID);
+    $pdfSTMT->bind_param("is", $projectID,$mediaType);
     $pdfSTMT->execute();
     $pdfResult = $pdfSTMT->get_result();
 
@@ -49,66 +52,55 @@ $conn->close();
 
 <!-- link to css -->
 <link href="../css/header.css" rel="stylesheet">
-<link href="../css/project.css" rel="stylesheet">
+<link href="../css/singleProject.css" rel="stylesheet">  
 
 <!-- include header -->
 <?php include_once '../includes/header.php'; ?>
 
-<!-- Include PDF.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<!-- link to js -->
+<script src="../js/singleUXLogic.js"></script>
+
+
+<!-- Modal Structure -->
+<div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <img src="../<?php echo htmlspecialchars($projectPDF['mediaPath']); ?>" class="modal-content" id="full-image">
+</div>
+
 
 <main class="main-content">
     <div class="container">
         <div class="row mt-5">
             <div class="col-12">
-                <h1><?php echo htmlspecialchars($project['title']); ?></h1>
+                <h1 ><?php echo htmlspecialchars($project['title']); ?></h1>
             </div>
         </div>
-        <div class="col-12 mt-4">
-            <?php if ($projectPDF): ?>
-            <!-- Embed PDF if available -->
-            <div id="pdf-viewer" class="pdf-viewer"></div>
-
-            <script>
-                var url = '../<?php echo htmlspecialchars($projectPDF['mediaPath']); ?>';
-
-                // Asynchronous download of PDF
-                var loadingTask = pdfjsLib.getDocument(url);
-                loadingTask.promise.then(function(pdf) {
-                    console.log('PDF loaded');
-
-                    // Fetch the first page
-                    pdf.getPage(1).then(function(page) {
-                        console.log('Page loaded');
-
-                        var scale = 1.5;
-                        var viewport = page.getViewport({scale: scale});
-
-                        // Prepare canvas using PDF page dimensions
-                        var canvas = document.createElement('canvas');
-                        var context = canvas.getContext('2d');
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        document.getElementById('pdf-viewer').appendChild(canvas);
-
-                        // Render PDF page into canvas context
-                        var renderContext = {
-                            canvasContext: context,
-                            viewport: viewport
-                        };
-                        var renderTask = page.render(renderContext);
-                        renderTask.promise.then(function() {
-                            console.log('Page rendered');
-                        });
-                    });
-                }, function (reason) {
-                    console.error('Error loading PDF:', reason);
-                });
-            </script>
-
-            <?php else: ?>
-            <p>No PDF available for this project.</p>
-            <?php endif; ?>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <?php if ($projectPDF): ?>
+                <!-- Case study img if available -->
+                <img class="case-study-img-thumbnail" src="../<?php echo htmlspecialchars($project['thumbnail']); ?>"  alt="<?php echo htmlspecialchars($project['title']); ?>">
+                <?php else: ?>
+                <p>No Case Study available for this project.</p>
+                <?php endif; ?>
+            </div>
         </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h1 class="single-prod-title">Prototypes</h1>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-4">
+                <iframe class="figma-prototype" style="border: 1px solid rgba(0, 0, 0, 0.1);"  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVq8dkbpL9Su0nukx7CIQo1%2FUX200-T3%3Fpage-id%3D26%253A3%26node-id%3D591-1262%26node-type%3DFRAME%26viewport%3D455%252C367%252C0.08%26t%3DJnS53JMb2yA9tdHU-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D591%253A1262" allowfullscreen></iframe>
+            </div>
+            <div class="col-4">
+                <iframe class="figma-prototype" style="border: 1px solid rgba(0, 0, 0, 0.1);"  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVq8dkbpL9Su0nukx7CIQo1%2FUX200-T3%3Fpage-id%3D704%253A848%26node-id%3D704-849%26node-type%3DFRAME%26viewport%3D504%252C775%252C0.16%26t%3D84qkMZC5DygzrdNW-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D704%253A849"ed%26starting-point-node-id%3D591%253A1262" allowfullscreen></iframe>
+            </div>
+            <div class="col-4">
+                <iframe class="figma-prototype" style="border: 1px solid rgba(0, 0, 0, 0.1);"  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVq8dkbpL9Su0nukx7CIQo1%2FUX200-T3%3Fpage-id%3D704%253A1080%26node-id%3D704-1085%26node-type%3DFRAME%26viewport%3D477%252C521%252C0.08%26t%3D3g1Kielfn8cqkza9-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26starting-point-node-id%3D704%253A1085" allowfullscreen></iframe>
+            </div>
+        </div>
+
     </div>
 </main>
