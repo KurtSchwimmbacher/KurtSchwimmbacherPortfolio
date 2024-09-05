@@ -1,0 +1,10 @@
+.github-link{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+
+    color: #1f1f1f;
+}
