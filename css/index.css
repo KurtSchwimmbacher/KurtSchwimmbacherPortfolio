@@ -9,10 +9,10 @@
 }
 
 .sec-nav-link{
-    background-color: #f7f7f7;
+    background-color: #79B473;
     padding: 1%;
     border-radius: 15px;
-    box-shadow: -3px 5px 4px 0px #2e2e2e15;
+    box-shadow: -3px 5px 4px 0px #1f1f1f15;
     width: 20%;
     text-align: center;
 
@@ -31,5 +31,5 @@
 
 .sec-nav-link >a{
     text-decoration: none;
-    color: #000;
+    color: #F0EDEE !important;
 }
