@@ -16,15 +16,25 @@ if (isset($_GET['id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Define the media type as a variable
+    // Define the media type for images
     $mediaType = 'image';
 
-    // Query to fetch the PDF associated with the project
+    // Query to fetch the images associated with the project
     $pdfSQL = "SELECT * FROM media WHERE projectID = ? AND mediaType = ?";
     $pdfSTMT = $conn->prepare($pdfSQL);
-    $pdfSTMT->bind_param("is", $projectID,$mediaType);
+    $pdfSTMT->bind_param("is", $projectID, $mediaType);
     $pdfSTMT->execute();
     $pdfResult = $pdfSTMT->get_result();
+
+    // Define the media type for prototypes
+    $protoType = 'prototype';
+
+    // Query to fetch the prototypes associated with the project
+    $protoSQL = "SELECT * FROM media WHERE projectID = ? AND mediaType = ?";
+    $protoSTMT = $conn->prepare($protoSQL);
+    $protoSTMT->bind_param("is", $projectID, $protoType);
+    $protoSTMT->execute();
+    $protoResult = $protoSTMT->get_result();
 
     if ($result->num_rows > 0) {
         $project = $result->fetch_assoc();
@@ -36,11 +46,12 @@ if (isset($_GET['id'])) {
     if ($pdfResult->num_rows > 0) {
         $projectPDF = $pdfResult->fetch_assoc();
     } else {
-        $projectPDF = null; // Handle the case where no PDF is found
+        $projectPDF = null; // Handle the case where no images are found
     }
 
     $stmt->close();
     $pdfSTMT->close();
+    $protoSTMT->close();
 
 } else {
     echo "No project ID provided.";
@@ -60,28 +71,26 @@ $conn->close();
 <!-- link to js -->
 <script src="../js/singleUXLogic.js"></script>
 
-
 <!-- Modal Structure -->
 <div id="image-modal" class="modal">
     <span class="close">&times;</span>
     <img src="../<?php echo htmlspecialchars($projectPDF['mediaPath']); ?>" class="modal-content" id="full-image">
 </div>
 
-
 <main class="main-content">
     <div class="container">
         <div class="row mt-5">
             <div class="col-12">
-                <h1 ><?php echo htmlspecialchars($project['title']); ?></h1>
+                <h1><?php echo htmlspecialchars($project['title']); ?></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12 mt-4">
                 <?php if ($projectPDF): ?>
-                <!-- Case study img if available -->
-                <img class="case-study-img-thumbnail" src="../<?php echo htmlspecialchars($project['thumbnail']); ?>"  alt="<?php echo htmlspecialchars($project['title']); ?>">
+                    <!-- Case study img if available -->
+                    <img class="case-study-img-thumbnail" src="../<?php echo htmlspecialchars($project['thumbnail']); ?>" alt="<?php echo htmlspecialchars($project['title']); ?>">
                 <?php else: ?>
-                <p>No Case Study available for this project.</p>
+                    <p>No Case Study available for this project.</p>
                 <?php endif; ?>
             </div>
         </div>
@@ -91,16 +100,15 @@ $conn->close();
             </div>
         </div>
         <div class="row mb-5">
-            <div class="col-4">
-                <iframe class="figma-prototype" style="border: 1px solid rgba(0, 0, 0, 0.1);"  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVq8dkbpL9Su0nukx7CIQo1%2FUX200-T3%3Fpage-id%3D26%253A3%26node-id%3D591-1262%26node-type%3DFRAME%26viewport%3D455%252C367%252C0.08%26t%3DJnS53JMb2yA9tdHU-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D591%253A1262" allowfullscreen></iframe>
-            </div>
-            <div class="col-4">
-                <iframe class="figma-prototype" style="border: 1px solid rgba(0, 0, 0, 0.1);"  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVq8dkbpL9Su0nukx7CIQo1%2FUX200-T3%3Fpage-id%3D704%253A848%26node-id%3D704-849%26node-type%3DFRAME%26viewport%3D504%252C775%252C0.16%26t%3D84qkMZC5DygzrdNW-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D704%253A849"ed%26starting-point-node-id%3D591%253A1262" allowfullscreen></iframe>
-            </div>
-            <div class="col-4">
-                <iframe class="figma-prototype" style="border: 1px solid rgba(0, 0, 0, 0.1);"  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVq8dkbpL9Su0nukx7CIQo1%2FUX200-T3%3Fpage-id%3D704%253A1080%26node-id%3D704-1085%26node-type%3DFRAME%26viewport%3D477%252C521%252C0.08%26t%3D3g1Kielfn8cqkza9-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26starting-point-node-id%3D704%253A1085" allowfullscreen></iframe>
-            </div>
+            <?php if ($protoResult->num_rows > 0): ?>
+                <?php while ($prototype = $protoResult->fetch_assoc()): ?>
+                    <div class="col-4">
+                        <iframe class="figma-prototype" style="border: 1px solid rgba(0, 0, 0, 0.1);" src="<?php echo htmlspecialchars($prototype['mediaPath']); ?>" allowfullscreen></iframe>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No Prototypes available for this project.</p>
+            <?php endif; ?>
         </div>
-
     </div>
 </main>

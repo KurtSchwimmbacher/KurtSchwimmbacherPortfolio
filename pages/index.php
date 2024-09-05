@@ -8,6 +8,7 @@
 <link href="../css/index.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 
+
 <main class="main-content">
     <div class="container">
         <div class="row">
@@ -19,13 +20,13 @@
         <div class="row">
             <div class="col-12">
                 <ul class="secondary-nav mt-5">
-                    <li class="sec-nav-link">
+                    <li class="sec-nav-link" id="linkToUX">
                         <a href="../pages/UX.php">UX</a>
                     </li>
-                    <li class="sec-nav-link">
+                    <li class="sec-nav-link" id="linkToDev">
                         <a href="../pages/Dev.php">Dev</a>
                     </li>
-                    <li class="sec-nav-link">
+                    <li class="sec-nav-link" id="linkToGraphic">
                         <a href="../pages/Graphic.php">Graphic Design</a>    
                     </li>
                 </ul>
