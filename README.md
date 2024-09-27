@@ -1,5 +1,4 @@
-[![Kurt's GitHub Banner](./uploads/Portfolio_Header.png)]
-
+![ClearView Header Image](https://github.com/KurtSchwimmbacher/KurtSchwimmbacherPortfolio/blob/main/uploads/Portfolio_Header.png)
 
 Hey there
 
@@ -10,8 +9,8 @@ I’m Kurt, a second year Development and UX Desig student at The Open Window. I
 
 <br>
 
-<a href="https://github.com/braydoncoyer/tailwindcss-v2-dark-mode-template">
-  <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api/pin/?username=braydoncoyer&repo=tailwindcss-v2-dark-mode-template&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
+<a href="https://github.com/KurtSchwimmbacher/DV200T3PHPProject">
+  <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api/pin/?username=KurtSchwimmbacher&repo=DV200T3PHPProject&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
 </a>
 
 <br>
