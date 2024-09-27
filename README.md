@@ -1,4 +1,4 @@
-![ClearView Header Image](https://github.com/KurtSchwimmbacher/KurtSchwimmbacherPortfolio/blob/main/uploads/Portfolio_Header.png)
+[![Kurt's GitHub Banner](./uploads/Portfolio_Header.png)]
 
 
 Hey there
