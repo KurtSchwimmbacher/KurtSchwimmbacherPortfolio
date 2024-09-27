@@ -8,10 +8,6 @@ I’m Kurt, a second year Development and UX Desig student at The Open Window. I
 ## 📌 Pinned Repositories
 
 <br>
-<a href="https://github.com/braydoncoyer/officeapi">
-  <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api/pin/?username=braydoncoyer&repo=officeapi&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
-</a>
-
 
 <a href="https://github.com/KurtSchwimmbacher/DV200T3PHPProject">
   <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api/pin/?username=KurtSchwimmbacher&repo=DV200T3PHPProject&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
